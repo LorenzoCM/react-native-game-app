@@ -1,15 +1,20 @@
 import React, { ReactElement } from "react";
-import { AppBoostrap } from "@components";
+import { AppBootstrap } from "@components";
 import Navigator from "@config/navigator";
-import { AndroidSafeArea } from "@utils";
-import { SafeAreaView } from "react-native";
+import { SettingsProvider } from "@contexts/settings-context";
+import Amplify from "aws-amplify";
+import config from "../aws-exports";
+import { AuthProvider } from "@contexts/auth-context";
+Amplify.configure(config);
 
 export default function App(): ReactElement {
     return (
-        <SafeAreaView style={AndroidSafeArea.AndroidSafeArea}>
-            <AppBoostrap>
-                <Navigator />
-            </AppBoostrap>
-        </SafeAreaView>
+        <AuthProvider>
+            <AppBootstrap>
+                <SettingsProvider>
+                    <Navigator />
+                </SettingsProvider>
+            </AppBootstrap>
+        </AuthProvider>
     );
 }

@@ -1,5 +1,5 @@
 import { BoardState } from "./types";
-import { isTerminal, getAvailableMoves, printFormattetBoard } from "./board";
+import { isTerminal, getAvailableMoves } from "./board";
 
 export const getBestMove = (
     state: BoardState,
